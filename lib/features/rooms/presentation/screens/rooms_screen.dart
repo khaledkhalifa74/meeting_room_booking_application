@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:meeting_room_booking_application/features/rooms/presentation/screens/widgets/room_card.dart';
 import 'package:meeting_room_booking_application/features/rooms/presentation/screens/widgets/room_skeleton_card.dart';
 import 'package:meeting_room_booking_application/features/rooms/presentation/screens/widgets/rooms_empty_widget.dart';
 import 'package:meeting_room_booking_application/features/rooms/presentation/screens/widgets/rooms_error_widget.dart';
+import '../../../../core/routing/routes.dart';
 import '../manager/rooms_cubit/rooms_cubit.dart';
 import '../manager/rooms_cubit/rooms_state.dart';
 
@@ -82,7 +84,9 @@ class _RoomsScreenState extends State<RoomsScreen> {
                 return RoomCard(
                   room: room,
                   onBook: () {
-                    // navigation later
+                    context.push(
+                      "${Routes.bookingScreen}?roomId=${room.id}",
+                    );
                   },
                 );
               },

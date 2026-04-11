@@ -6,14 +6,28 @@ class ApiService{
 
   ApiService(this._dio);
 
-  Future<Map<String,dynamic>> get({required String endPoint, Map<String, dynamic>? queryParameters})async{
-    var response = await _dio.get('$baseUrl$endPoint',queryParameters: queryParameters);
+  Future<Map<String,dynamic>> get({
+    required String endPoint,
+    Map<String, dynamic>? queryParameters,
+  }) async{
+    var response = await _dio.get(
+        '$baseUrl$endPoint',
+        queryParameters: queryParameters,
+    );
 
     return response.data;
   }
 
-  Future<Map<String,dynamic>> post({required String endPoint, Map<String, dynamic>? queryParameters})async{
-    var response = await _dio.post('$baseUrl$endPoint',queryParameters: queryParameters);
+  Future<Map<String, dynamic>> post({
+    required String endPoint,
+    Map<String, dynamic>? data,
+    Map<String, dynamic>? queryParameters,
+  }) async {
+    final response = await _dio.post(
+      '$baseUrl$endPoint',
+      data: data,
+      queryParameters: queryParameters,
+    );
 
     return response.data;
   }

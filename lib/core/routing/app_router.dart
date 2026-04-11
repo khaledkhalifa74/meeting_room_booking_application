@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meeting_room_booking_application/core/routing/routes.dart';
 import 'package:meeting_room_booking_application/core/di/di.dart';
+import '../../features/booking/presentation/manager/booking_cubit/booking_cubit.dart';
 import '../../features/booking/presentation/screens/booking_screen.dart';
 import '../../features/rooms/presentation/screens/rooms_screen.dart';
 import '../../features/rooms/presentation/manager/rooms_cubit/rooms_cubit.dart';
@@ -27,7 +28,13 @@ class AppRouter {
       /// 🔹 Booking Screen
       GoRoute(
         path: Routes.bookingScreen,
-        builder: (context, state) => const BookingScreen(),
+        builder: (context, state) {
+          final roomId = int.parse(state.uri.queryParameters['roomId']!);
+
+          return BlocProvider(
+              create: (_) => di<BookingCubit>()..getBookings(roomId),
+              child: BookingScreen(roomId: roomId));
+        },
       ),
     ],
   );
