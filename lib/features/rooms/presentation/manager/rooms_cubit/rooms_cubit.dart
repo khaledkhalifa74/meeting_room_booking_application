@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meeting_room_booking_application/features/rooms/presentation/manager/rooms_cubit/rooms_state.dart';
 import '../../../../../core/api_client/api_failure.dart';
-import '../../../data/repo/rooms_repo.dart';
+import '../../../data/repos/rooms_repo.dart';
 
 class RoomsCubit extends Cubit<RoomsState> {
   final RoomsRepo repo;

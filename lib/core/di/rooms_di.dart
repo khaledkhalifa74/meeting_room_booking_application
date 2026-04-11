@@ -1,5 +1,5 @@
-import '../../features/rooms/data/datasource/rooms_remote_ds.dart';
-import '../../features/rooms/data/repo/rooms_repo.dart';
+import '../../features/rooms/data/data_source/rooms_remote_ds.dart';
+import '../../features/rooms/data/repos/rooms_repo.dart';
 import '../../features/rooms/presentation/manager/rooms_cubit/rooms_cubit.dart';
 import 'di.dart';
 

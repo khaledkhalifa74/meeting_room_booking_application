@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import '../../../../core/api_client/api_failure.dart';
-import '../datasource/rooms_remote_ds.dart';
+import '../data_source/rooms_remote_ds.dart';
 import '../models/room_model.dart';
 
 class RoomsRepo {
