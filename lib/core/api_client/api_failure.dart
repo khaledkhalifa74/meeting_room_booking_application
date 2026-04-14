@@ -26,19 +26,29 @@ class ServerFailure extends Failure{
       case DioExceptionType.connectionError:
         return ServerFailure(message: 'No internet connection');
       case DioExceptionType.unknown:
-        return ServerFailure(message: 'Opps there was an error, please try again');
+        return ServerFailure(
+          message: e.message ?? 'Unknown error occurred',
+        );
     }
   }
 
-  factory ServerFailure.fromResponse(int? statusCode, dynamic response){
-    if(statusCode == 404){
-      return ServerFailure(message: 'Your request was not found, please try later');
-    }else if(statusCode == 500){
-      return ServerFailure(message: 'There is a problem with server, please try later');
-    }else if(statusCode == 400 || statusCode == 401 || statusCode == 403){
-      return ServerFailure(message: response['errors']['message']);
-    }else{
-      return ServerFailure(message: 'There was an error, please try again');
+  factory ServerFailure.fromResponse(int? statusCode, dynamic response) {
+    try {
+      if (statusCode == 404) {
+        return ServerFailure(message: 'Your request was not found, please try later');
+      } else if (statusCode == 500) {
+        return ServerFailure(message: 'There is a problem with server, please try later');
+      } else if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
+        return ServerFailure(
+          message: response?['errors']?['message'] ??
+              response?['message'] ??
+              'Unauthorized request',
+        );
+      } else {
+        return ServerFailure(message: 'There was an error, please try again');
+      }
+    } catch (e) {
+      return ServerFailure(message: 'Error parsing server response');
     }
   }
 }
