@@ -11,7 +11,7 @@ class RoomsRemoteDataSource {
       endPoint: '/items/rooms',
     );
 
-    List roomsList = data['data'];
+    final roomsList = data['data'] as List? ?? [];
 
     return roomsList.map((e) => RoomModel.fromJson(e)).toList();
   }

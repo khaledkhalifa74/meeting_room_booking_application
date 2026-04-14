@@ -132,7 +132,7 @@ Approximately 3–4 hours:
 ### Option 1: APK (Recommended)
 You can download the ready-to-install APK from the link below:
 
-👉 [Download APK](https://drive.google.com/file/d/1IKE0wcMp5FcBMVC1cwVXB8-YzZMsjecD/view?usp=sharing)
+👉 [Download APK](https://drive.google.com/file/d/1PQwoLZCPIDZIwyecpxnJ7jVC0B09hJ38/view?usp=sharing)
 
 Or generate it manually using:
 flutter build apk
